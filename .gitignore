@@ -1,0 +1,41 @@
+<<<<<<< HEAD
+.project
+.classpath
+.settings
+.cvsignore
+test-output
+**/target
+**/bin
+**log
+**/etc
+**.orig
+#bamboo creates this file for own purposes
+build-number.txt
+release.properties
+**pom.xml.*
+*.lck
+*.log
+**.bak
+**/rebel.xml
+#IntelliJ IDEA settinds
+atlassian-ide-plugin.xml
+**.idea
+**.iml
+**.iws
+**.ipr
+**/*-db.properties
+.DS_Store 
+=======
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+>>>>>>> 15a4a981667103fdda7ed3fe65b18150e1d8fe32
