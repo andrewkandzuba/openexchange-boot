@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.openexchange</groupId>
         <artifactId>openexchange-boot</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>openexchange-boot-batch</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>openexchange ::: ${project.artifactId}</name>

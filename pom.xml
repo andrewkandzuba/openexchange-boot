@@ -10,7 +10,7 @@
 
     <artifactId>openexchange-boot</artifactId>
     <groupId>org.openexchange</groupId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>openexchange ::: ${project.artifactId}</name>
