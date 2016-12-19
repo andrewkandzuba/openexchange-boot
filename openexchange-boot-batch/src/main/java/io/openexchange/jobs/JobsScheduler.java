@@ -1,4 +1,4 @@
-package org.openexchange.jobs;
+package io.openexchange.jobs;
 
 import org.apache.commons.lang3.reflect.MethodUtils;
 import org.slf4j.Logger;

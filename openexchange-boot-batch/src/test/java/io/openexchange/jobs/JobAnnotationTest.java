@@ -1,4 +1,4 @@
-package org.openexchange.jobs;
+package io.openexchange.jobs;
 
 import org.junit.Assert;
 import org.junit.Test;

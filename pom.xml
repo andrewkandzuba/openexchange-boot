@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>openexchange-boot</artifactId>
-    <groupId>org.openexchange</groupId>
+    <groupId>io.openexchange</groupId>
     <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -130,7 +130,7 @@
                         <includeJsr303Annotations>true</includeJsr303Annotations>
                         <sourceDirectory>${basedir}/src/main/resources/pojos</sourceDirectory>
                         <outputDirectory>${basedir}/target/generated-sources</outputDirectory>
-                        <targetPackage>org.openexchange.pojos</targetPackage>
+                        <targetPackage>io.openexchange.pojos</targetPackage>
                         <useCommonsLang3>true</useCommonsLang3>
                         <serializable>true</serializable>
                         <generateBuilders>true</generateBuilders>

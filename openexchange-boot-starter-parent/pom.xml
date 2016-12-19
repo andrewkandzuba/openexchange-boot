@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.openexchange</groupId>
+        <groupId>io.openexchange</groupId>
         <artifactId>openexchange-boot</artifactId>
         <version>1.0.2-SNAPSHOT</version>
     </parent>
@@ -18,7 +18,7 @@
         <dependencies>
             <dependency>
                 <artifactId>openexchange-boot-batch</artifactId>
-                <groupId>org.openexchange</groupId>
+                <groupId>io.openexchange</groupId>
                 <version>1.0.2-SNAPSHOT</version>
             </dependency>
         </dependencies>
