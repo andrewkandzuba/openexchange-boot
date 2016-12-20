@@ -1,6 +1,6 @@
 # Overview
 
-**Batch scheduled jobs library**
+**Scheduled and resume-able jobs framework**
 
 The library discovers all visible methods annotated with @Job in @Configuration classes loaded into ApplicationContext and then try to schedule a repeatable tasks.
 

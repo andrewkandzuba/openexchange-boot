@@ -1,2 +1,3 @@
 # openexchange-boot
-The boot configuration for all other openechange projects 
+
+The bootstrap and dependencies bundle for all projects in `io.openexchange` space.
