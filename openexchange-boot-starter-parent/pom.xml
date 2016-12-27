@@ -5,11 +5,11 @@
     <parent>
         <groupId>io.openexchange</groupId>
         <artifactId>openexchange-boot</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>openexchange-boot-starter-parent</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>openexchange ::: ${project.artifactId}</name>
@@ -19,7 +19,7 @@
             <dependency>
                 <artifactId>openexchange-boot-batch</artifactId>
                 <groupId>io.openexchange</groupId>
-                <version>1.0.2</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
