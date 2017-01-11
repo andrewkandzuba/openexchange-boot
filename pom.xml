@@ -87,6 +87,7 @@
     <modules>
         <module>openexchange-boot-batch</module>
         <module>openexchange-boot-starter-parent</module>
+        <module>openexchange-boot-metrics</module>
     </modules>
 
     <build>
