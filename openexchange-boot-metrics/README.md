@@ -1,6 +1,6 @@
 # Overview
 
-**Spring Actuator Metrics reporter**
+**Spring Actuator Rich Gauge Metrics reporter**
 
 The library contains scheduled service to print out into log custom metrics  
 

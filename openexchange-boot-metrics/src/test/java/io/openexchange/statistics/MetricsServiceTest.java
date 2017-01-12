@@ -1,10 +1,11 @@
 package io.openexchange.statistics;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.metrics.repository.MetricRepository;
+import org.springframework.boot.actuate.metrics.rich.RichGaugeRepository;
 import org.springframework.boot.actuate.metrics.writer.Delta;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,26 +21,26 @@ public class MetricsServiceTest {
     @Autowired
     private MetricsService metricsService;
     @Autowired
-    private MetricRepository metricRepository;
+    private RichGaugeRepository metricRepository;
+
+    @Before
+    public void setUp() throws Exception {
+        metricRepository.reset(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total");
+    }
 
     @Test
     public void testMetrics() throws Exception {
-        metricRepository.increment(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "1.total", 1));
-        metricRepository.increment(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER +  "1.total", 1));
-        metricRepository.increment(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER +  "1.failure",1 ));
-        metricRepository.increment(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "1.time", 101));
+        metricRepository.set(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total", 1));
+        metricRepository.set(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total", 2));
+        metricRepository.set(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total", 3));
 
-        metricRepository.increment(new Delta<Number>(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "2.total", 1));
-        metricRepository.increment(new Delta<Number>( COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "2.time", 200));
-
-        Assert.assertEquals(2L, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "1.total").getValue());
-        Assert.assertEquals(1L, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "1.failure").getValue());
-        Assert.assertEquals(101L, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "1.time").getValue());
-
-        Assert.assertEquals(1L, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "2.total").getValue());
-        Assert.assertNull(metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "2.failure"));
-        Assert.assertEquals(200L, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "2.time").getValue());
+        Assert.assertEquals(3L, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total").getCount());
+        Assert.assertEquals(3L, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total").getValue(), 0.0);
+        Assert.assertEquals(1.0, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total").getMin(), 0.0);
+        Assert.assertEquals(3.0, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total").getMax(), 0.0);
+        Assert.assertEquals(2.0, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total").getAverage(), 0.0);
 
         metricsService.export();
     }
+
 }
