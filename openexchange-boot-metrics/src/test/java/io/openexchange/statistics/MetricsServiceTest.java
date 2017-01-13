@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.metrics.export.Exporter;
 import org.springframework.boot.actuate.metrics.rich.RichGaugeRepository;
 import org.springframework.boot.actuate.metrics.writer.Delta;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,9 +20,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MetricsServiceTest {
     private final static String COUNTER_OPENEXCHANGE_BENCHMARK_SERVER = "counter.openexchange.benchmark.server.";
     @Autowired
-    private MetricsService metricsService;
-    @Autowired
     private RichGaugeRepository metricRepository;
+    @Autowired
+    private Exporter export;
 
     @Before
     public void setUp() throws Exception {
@@ -40,7 +41,7 @@ public class MetricsServiceTest {
         Assert.assertEquals(3.0, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total").getMax(), 0.0);
         Assert.assertEquals(2.0, metricRepository.findOne(COUNTER_OPENEXCHANGE_BENCHMARK_SERVER + "total").getAverage(), 0.0);
 
-        metricsService.export();
+        export.export();
     }
 
 }
