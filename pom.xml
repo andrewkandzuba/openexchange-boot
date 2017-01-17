@@ -242,13 +242,26 @@
                                 </build>
                             </image>
                         </images>
+                        <authConfig>
+                            <push>
+                                <username>${DOCKER_USERNAME}</username>
+                                <password>${DOCKER_PASSWORD}</password>
+                            </push>
+                        </authConfig>
                     </configuration>
                     <executions>
                         <execution>
-                            <id>docker</id>
+                            <id>docker-build</id>
                             <phase>package</phase>
                             <goals>
                                 <goal>build</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>docker-push</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>push</goal>
                             </goals>
                         </execution>
                     </executions>
