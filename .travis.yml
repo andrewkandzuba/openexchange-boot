@@ -13,6 +13,9 @@ env:
     - secure: "JYgDi+dt4CbL4T3gAxgc4ObtEAsoDfneMI6AkmA+QKbOqK2he/YGs043Oepl18zLscDHQAjIR9cx4kYm0xfdkFB4QlTag2/AnXEjtiJ9HNlYWacyBM7HBNQ1oQ4uy0KPua1517hvZWlNX6p0sQLthxxIyQLjk33qidz1mhFET1+3tWB1eDdZJKUSzKxOgmO1GvLOOhqp3hS3i3rGRv0ifiYNA03IutxhEdauGWuo6CWblv7/iRvbsygnYVfc6PjSYQzZpm5qrLHE9uz2CKCXjzIm8UNF5njrxRrjESn9S0NVGw8xLaK917cElDhJCwRovbvlC+eVtbkDinNutbGsvyllZzNRM6ZuhvhLQkxDmkAdXroxD/iuTYfcfSi5J9mSu8r/EZssvsLJzEIAds8oNBV++NR/6FJhLbTwL8RePTsAKzkajrGr0aXMLc518RSKODP0kqNRxr3QnQsNF8SrjZkrKW6aJ+d4eKwom5rP0AD5u1K0nutPXeJk7HFIyGBQ+WDzUfBzSTAmrMRz5U4WtLIxLnn9nXYRcx9NFDYDiGYIplvrIryAedykMaEv92Tlm0zL+6mLsJ+V5tPj87hqYIhBLpIA/puAT0Qtk/FVDqLW+OcA99NGexmWaOzjbHa8U9BoDAe1F+L0DkqkbF2SBTIOSSz01ggw/AXWKIxu6x4="
     - # ^^ GPG_PASSPHRASE
 
+before_install:
+  - chmod +x ./cd/before-deploy.sh
+  - chmod +x ./cd/deploy.sh
 install: mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script: mvn test -P !build-extras -B
 
