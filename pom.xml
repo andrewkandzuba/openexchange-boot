@@ -208,52 +208,6 @@
                     </dependencies>
                 </plugin>
                 <plugin>
-                    <groupId>io.fabric8</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
-                    <version>${fabric8.docker-maven-plugin.version}</version>
-                    <configuration>
-                        <verbose>true</verbose>
-                        <images>
-                            <image>
-                                <alias>${project.artifactId}</alias>
-                                <name>%g/${project.artifactId}:${project.version}</name>
-                                <build>
-                                    <tags>
-                                        <tag>latest</tag>
-                                        <tag>${project.version}</tag>
-                                    </tags>
-                                    <from>openjdk:8</from>
-                                    <assembly>
-                                        <inline>
-                                            <dependencySets>
-                                                <dependencySet>
-                                                    <includes>
-                                                        <include>${project.groupId}:${project.artifactId}:jar:${project.version}
-                                                        </include>
-                                                    </includes>
-                                                    <outputFileNameMapping>${project.artifactId}.jar</outputFileNameMapping>
-                                                </dependencySet>
-                                            </dependencySets>
-                                        </inline>
-                                    </assembly>
-                                    <entryPoint>
-                                        <shell>java $JAVA_OPTS -Djava.security.egd=file:/dev/urandom -jar /maven/${project.artifactId}.jar</shell>
-                                    </entryPoint>
-                                </build>
-                            </image>
-                        </images>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>docker</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
                     <version>${nexus-staging-maven-plugin.version}</version>
@@ -330,6 +284,59 @@
                                 <id>attach-javadocs</id>
                                 <goals>
                                     <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>build-docker</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>${fabric8.docker-maven-plugin.version}</version>
+                        <configuration>
+                            <verbose>true</verbose>
+                            <images>
+                                <image>
+                                    <alias>${project.artifactId}</alias>
+                                    <name>%g/${project.artifactId}:${project.version}</name>
+                                    <build>
+                                        <tags>
+                                            <tag>latest</tag>
+                                            <tag>${project.version}</tag>
+                                        </tags>
+                                        <from>openjdk:8</from>
+                                        <assembly>
+                                            <inline>
+                                                <dependencySets>
+                                                    <dependencySet>
+                                                        <includes>
+                                                            <include>${project.groupId}:${project.artifactId}:jar:${project.version}
+                                                            </include>
+                                                        </includes>
+                                                        <outputFileNameMapping>${project.artifactId}.jar</outputFileNameMapping>
+                                                    </dependencySet>
+                                                </dependencySets>
+                                            </inline>
+                                        </assembly>
+                                        <entryPoint>
+                                            <shell>java $JAVA_OPTS -Djava.security.egd=file:/dev/urandom -jar /maven/${project.artifactId}.jar</shell>
+                                        </entryPoint>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>docker</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>build</goal>
                                 </goals>
                             </execution>
                         </executions>
