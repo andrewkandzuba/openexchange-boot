@@ -10,7 +10,8 @@ env:
     - # ^^ OSSRH_JIRA_PASSWORD
     - secure: "SM7g8xieth1Ac8cxD24EnlFDPIEfMY3dodSN9GIwqHQ3SWrsaiv6Fs0MnV5ghBrp+2/rBcLMkHEHQ9T3vlzMFDLNPzWxoRpSZu5ZJkf67YCbPTJfpirRcL5Ajz2EVn1Z9Z/70NJKOb2RBW7RlLdmINcwImxyvctjrbT5I15zxY8Lr3kNZsLoPAUqLqzGkkA8cpfMnUUWNsdG5BiJxlQirFyolcpVdyRjV8mb6BEeKCRKydntvqmWdQiHp8XPnCvmkqlV9JrVa5qNRiBCSv8Xu/5pej7oStk2EJe9+dIQFO4cO0HZ3M5DcjBv8nVw828hWjCaPWxKCyqrb6YtPMhnO6ZKDp4vI8BrdokoDzBF29Psyce/w6YUtKO0GdBzcXth8pTpoiX457RbqK4BJcUw67btd4UqzcxVxWB0QOxb8dp0GpHcNU4yzyxC2XC4ruuzShmI+d5tWzJYLOATyFJ0tbqqYGzFcjLf3Ph6Z+c1PCtTahn09EV0EQ9NdNWryAq2gIAl530/T6f4FyWvRSbjEK5yzrlBACg7gpdTlIpulbvtT5yyeTdLtZKloOWoaUc0PHrG9vG6iRQVLRIFPXMPWgf7HxQDp5yIhUECrKy7NvoMgwZ8Bwv+Qu62qfOelJ0lX+LT5HdBsYmpuW5gaqxKUA7aXJxoASvqgdazApFapMY="
     - # ^^ GPG_KEY_NAME
-    - secure: "H4ynJXZsNjlvx3qo4LnTxR6HIuvrERX2yeEIAPudOpPzPqcAlsPT89K9lGPnGaItpJvflTkly/ITpLpSnbkZRVez+M8l2EFmgpsQA+/zSXDEO1UXyfojsMGWC/Hbx4FscoTJjI/gD2HcxfAy8+VrBmjzLifahO7puBz0HIG80lz/62kDU+0T+JZ8gTsu2gd6diEq/UZnTedCuysstthIlV8Lo0eaLsEb9JUiTpNbifcmNejyKCsPBHYnM/lmV7h0ogC4flbRUR9pIy8KEEPODVJb5R77eXMzIymJWa3waWmAk1CPw105KZlg4ioXC4xjV6pG7pxnZxoQTS7+eMGI18Jtd8sXNInJ79x/tDjPFFmBpQCuEbQHl4Gx6oF868CFz5P2L1d5Uysv6U5ek5dRG0wEjMoDfCAtXPUsoYaedo/IK9x6ZRaQ/51+NPpIENZpHjGVe4m78ROWK+/ia5unYKYoUViwa7zOyk2homgL9+47Cgz2ddP2JviZ28Q4tOZk3pbzEGwf9l8WCST9utQn8wqvFMO4H/5QwPTcNf/LB/0PyurnAcKz0ChPfSlH7/alGLmImAxk7WMbMyoYBImlllXBmq7e7CzH+FioFIh4beLlSRnQ7Okh4BY0eE9HhhP4qd1ug+HdiOnFVaI9HjGpeMMXEpY88oUPP+mPR6SPlFU="    - # ^^ GPG_PASSPHRASE
+    - secure: "JYgDi+dt4CbL4T3gAxgc4ObtEAsoDfneMI6AkmA+QKbOqK2he/YGs043Oepl18zLscDHQAjIR9cx4kYm0xfdkFB4QlTag2/AnXEjtiJ9HNlYWacyBM7HBNQ1oQ4uy0KPua1517hvZWlNX6p0sQLthxxIyQLjk33qidz1mhFET1+3tWB1eDdZJKUSzKxOgmO1GvLOOhqp3hS3i3rGRv0ifiYNA03IutxhEdauGWuo6CWblv7/iRvbsygnYVfc6PjSYQzZpm5qrLHE9uz2CKCXjzIm8UNF5njrxRrjESn9S0NVGw8xLaK917cElDhJCwRovbvlC+eVtbkDinNutbGsvyllZzNRM6ZuhvhLQkxDmkAdXroxD/iuTYfcfSi5J9mSu8r/EZssvsLJzEIAds8oNBV++NR/6FJhLbTwL8RePTsAKzkajrGr0aXMLc518RSKODP0kqNRxr3QnQsNF8SrjZkrKW6aJ+d4eKwom5rP0AD5u1K0nutPXeJk7HFIyGBQ+WDzUfBzSTAmrMRz5U4WtLIxLnn9nXYRcx9NFDYDiGYIplvrIryAedykMaEv92Tlm0zL+6mLsJ+V5tPj87hqYIhBLpIA/puAT0Qtk/FVDqLW+OcA99NGexmWaOzjbHa8U9BoDAe1F+L0DkqkbF2SBTIOSSz01ggw/AXWKIxu6x4="
+    - # ^^ GPG_PASSPHRASE
 
 install: mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script: mvn test -P !build-extras -B
@@ -22,6 +23,3 @@ cache:
 after_success:
   - ./cd/before-deploy.sh
   - ./cd/deploy.sh
-
-after_success:
-  - mvn deploy --settings travis-settings.xml -DskipTests=true -B -P deploy
