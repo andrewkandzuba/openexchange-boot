@@ -10,7 +10,7 @@
 
     <artifactId>openexchange-boot</artifactId>
     <groupId>io.openexchange</groupId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
 
     <name>openexchange ::: ${project.artifactId}</name>
@@ -40,7 +40,7 @@
         <developerConnection>
             scm:git:[fetch=]https://github.com/andrewkandzuba/${project.artifactId}.git[push=]git@github.com:andrewkandzuba/${project.artifactId}.git
         </developerConnection>
-      <tag>HEAD</tag>
+      <tag>v1.0.4</tag>
   </scm>
 
     <properties>
